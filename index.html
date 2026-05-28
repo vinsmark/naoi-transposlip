@@ -427,6 +427,26 @@
             margin-bottom: 16px;
         }
 
+        .back-link {
+            width: 100%;
+            max-width: 760px;
+            margin-bottom: 20px;
+        }
+
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            color: var(--text);
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 16px;
@@ -497,7 +517,12 @@
                 <i class="fas fa-file-lines"></i>
                 Internal Utility Tool
             </div>
-
+            <div class="back-link">
+                <a href="https://vinsmark.github.io/vinstools/">
+                    <i class="fas fa-arrow-left"></i>
+                    vinstools
+                </a>
+            </div>
             <h1>Transportation Expenses Slip Generator</h1>
 
             <p>
