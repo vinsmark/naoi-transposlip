@@ -8,9 +8,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 
     <style>
         * {
@@ -20,26 +21,23 @@
         }
 
         :root {
-            --bg: #fafafa;
-            --dot-color: #d1d5db;
-            --border: #e5e7eb;
-            --text: #111111;
-            --text-muted: #6b7280;
-            --text-light: #9ca3af;
-            --card-bg: #ffffff;
+            --bg: #09090b;
+            --border: #ffffff1a;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --card-bg: #111113;
+            --input-bg: #09090b;
             --radius: 14px;
 
-            --primary: #111111;
+            --primary: #fafafa;
+            --primary-text: #09090b;
             --green: #16a34a;
-            --gray: #6b7280;
+            --gray: #27272a;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Geist', sans-serif;
             background-color: var(--bg);
-            background-image:
-                radial-gradient(circle, var(--dot-color) 1.2px, transparent 1.2px);
-            background-size: 22px 22px;
             color: var(--text);
             min-height: 100vh;
             padding: 24px;
@@ -64,7 +62,7 @@
             letter-spacing: .08em;
             text-transform: uppercase;
             border: 1px solid var(--border);
-            background: white;
+            background: var(--card-bg);
             border-radius: 999px;
             padding: 6px 12px;
             margin-bottom: 18px;
@@ -89,7 +87,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 22px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
             margin-bottom: 28px;
         }
 
@@ -115,7 +113,7 @@
         }
 
         .slip-info {
-            background: #f8fafc;
+            background: var(--input-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 12px 16px;
@@ -142,19 +140,27 @@
         }
 
         .entry-table th {
-            background: #111111;
-            color: white;
+            background: var(--card-bg);
+            color: var(--text);
             font-size: 12px;
             font-weight: 600;
             text-align: left;
             padding: 14px 12px;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--border);
         }
+
+        .entry-table th:nth-child(2) { width: 160px; } /* Date */
+        .entry-table th:nth-child(3) { width: 200px; } /* Dest */
+        .entry-table th:nth-child(4) { width: 140px; } /* MOT */
+        .entry-table th:nth-child(5) { width: 110px; } /* Amount */
+        .entry-table th:nth-child(6) { width: 150px; } /* Purpose */
+        .entry-table th:nth-child(7) { width: 160px; } /* RecBy */
 
         .entry-table td {
             padding: 10px;
-            border-bottom: 1px solid #f1f5f9;
-            background: white;
+            border-bottom: 1px solid var(--border);
+            background: var(--card-bg);
+            vertical-align: middle;
         }
 
         .entry-table tr:last-child td {
@@ -165,7 +171,8 @@
         .entry-table select {
             width: 100%;
             border: 1px solid var(--border);
-            background: #fafafa;
+            background: var(--input-bg);
+            color: var(--text);
             border-radius: 10px;
             padding: 10px 12px;
             font-size: 13px;
@@ -176,8 +183,8 @@
         .entry-table input:focus,
         .entry-table select:focus {
             outline: none;
-            border-color: #cbd5e1;
-            background: white;
+            border-color: var(--text-muted);
+            background: var(--input-bg);
         }
 
         .entry-table input[type="number"] {
@@ -194,22 +201,27 @@
         .col-del {
             width: 50px;
             text-align: center;
+            vertical-align: middle;
         }
 
         .btn-del {
-            border: none;
-            background: #fef2f2;
-            color: #dc2626;
-            width: 34px;
-            height: 34px;
+            border: 1px solid #7f1d1d;
+            background: #450a0a;
+            color: #fca5a5;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             cursor: pointer;
             transition: .15s;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
         }
 
         .btn-del:hover {
-            background: #fee2e2;
+            background: #7f1d1d;
         }
 
         .btn-group {
@@ -221,7 +233,7 @@
 
         button {
             border: 1px solid var(--border);
-            background: white;
+            background: var(--card-bg);
             color: var(--text);
             border-radius: 12px;
             padding: 12px 18px;
@@ -235,17 +247,19 @@
         }
 
         button:hover {
+            background: var(--input-bg);
             transform: translateY(-1px);
         }
 
         .btn-primary {
-            background: #111111;
-            color: white;
-            border-color: #111111;
+            background: var(--primary);
+            color: var(--primary-text);
+            border-color: var(--primary);
         }
 
         .btn-primary:hover {
-            background: #222;
+            background: #e4e4e7;
+            border-color: #e4e4e7;
         }
 
         .btn-green {
@@ -265,7 +279,7 @@
         }
 
         .btn-gray:hover {
-            background: #4b5563;
+            background: #3f3f46;
         }
 
         .page {
@@ -279,6 +293,7 @@
 
         .slip {
             background: #fff;
+            color: #000;
             border: 1px solid #000;
             padding: 10px;
             display: flex;
@@ -453,12 +468,89 @@
             }
 
             .controls {
-                padding: 18px;
+                padding: 16px;
             }
 
             .btn-group button {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .table-wrapper {
+                border: none;
+                border-radius: 0;
+                overflow-x: visible;
+                background: transparent;
+            }
+
+            .entry-table {
+                min-width: 0;
+            }
+
+            .entry-table thead {
+                display: none;
+            }
+
+            .entry-table tbody tr {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                margin-bottom: 16px;
+                padding: 16px;
+                background: var(--input-bg);
+                gap: 12px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .entry-table td {
+                padding: 0;
+                border: none;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .entry-table td[data-label]::before {
+                content: attr(data-label);
+                font-size: 11px;
+                font-weight: 600;
+                color: var(--text-muted);
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .col-num {
+                width: 100%;
+                text-align: left;
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--text);
+                border-bottom: 1px solid var(--border) !important;
+                padding-bottom: 12px !important;
+                margin-bottom: 4px;
+            }
+            .col-num::before { display: none !important; } /* Hide label for # */
+
+            .col-del {
+                width: 100%;
+                margin-top: 8px;
+            }
+            
+            .btn-del {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: #450a0a;
+                color: #fca5a5;
+                border: 1px solid #7f1d1d;
+            }
+            .btn-del::after {
+                content: "Remove Entry";
+                font-size: 14px;
+                font-weight: 600;
             }
         }
 
@@ -530,64 +622,90 @@
             </p>
         </div>
 
-        <div class="controls">
-
-            <div class="controls-top">
-                <div>
-                    <h2>Slip Entries</h2>
-                    <p>
-                        Fill in each row to generate printable transportation slips.
-                    </p>
-                </div>
-
-                <div class="slip-info">
-                    Slips: <span id="slipCount">0</span><br>
-                    Pages Needed: <span id="pageCount">0</span>
-                </div>
+        <div id="setupView" class="controls" style="max-width: 500px; margin: 40px auto; text-align: center;">
+            <h2 style="margin-bottom: 12px; font-size: 24px; letter-spacing: -0.5px;">Select Dates</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 15px;">
+                Please select the dates you want to generate slips for.
+            </p>
+            
+            <div style="margin-bottom: 24px; text-align: left;">
+                <input type="text" id="setupDates" placeholder="Click to select dates..." 
+                       style="width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 15px; font-family: inherit; background: var(--input-bg); color: var(--text); cursor: pointer;">
             </div>
 
-            <div class="table-wrapper">
-                <table class="entry-table">
-                    <thead>
-                        <tr>
-                            <th class="col-num">#</th>
-                            <th>Date</th>
-                            <th>Destination</th>
-                            <th>MOT</th>
-                            <th>Amount</th>
-                            <th>Purpose</th>
-                            <th>Received By</th>
-                            <th class="col-del"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="entryBody"></tbody>
-                </table>
-            </div>
-
-            <div class="btn-group">
-                <button class="btn-green" onclick="addRow()">
-                    <i class="fas fa-plus"></i>
-                    Add Slip
-                </button>
-
-                <button class="btn-primary" onclick="generateAll()">
-                    <i class="fas fa-file-export"></i>
-                    Generate Slips
-                </button>
-
-                <button onclick="window.print()">
-                    <i class="fas fa-print"></i>
-                    Print
-                </button>
-
-                <button class="btn-gray" onclick="clearAll()">
-                    <i class="fas fa-trash"></i>
-                    Clear All
-                </button>
-            </div>
+            <button class="btn-primary" onclick="startWithDates()" style="width: 100%; justify-content: center; padding: 14px; font-size: 16px;">
+                OK, Continue
+                <i class="fas fa-arrow-right" style="margin-left: 4px;"></i>
+            </button>
         </div>
 
-        <div id="output"></div>
+        <div id="mainView" style="display: none;">
+            <div class="controls" id="controlsContainer">
+
+                <div class="controls-top" onclick="toggleAccordion()" style="cursor: pointer; user-select: none;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <h2 style="display: flex; align-items: center; gap: 8px;">
+                                Slip Entries 
+                                <i id="accordionIcon" class="fas fa-chevron-up" style="font-size: 14px; transition: 0.3s;"></i>
+                            </h2>
+                            <p>
+                                Fill in each row to generate printable transportation slips.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="slip-info">
+                        Slips: <span id="slipCount">0</span><br>
+                        Pages Needed: <span id="pageCount">0</span>
+                    </div>
+                </div>
+
+                <div id="accordionContent">
+                    <div class="table-wrapper">
+                        <table class="entry-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-num">#</th>
+                                    <th>Date</th>
+                                    <th>Destination</th>
+                                    <th>MOT</th>
+                                    <th>Amount</th>
+                                    <th>Purpose</th>
+                                    <th>Received By</th>
+                                    <th class="col-del"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="entryBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn-green" onclick="addRow()">
+                            <i class="fas fa-plus"></i>
+                            Add Slip
+                        </button>
+
+                        <button class="btn-primary" onclick="generateAll()">
+                            <i class="fas fa-file-export"></i>
+                            Generate Slips
+                        </button>
+
+                        <button onclick="window.print()">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+
+                        <button class="btn-gray" onclick="clearAll()">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="output"></div>
+        </div>
 
     </div>
 
@@ -611,19 +729,19 @@
             tr.id = 'row_' + n;
 
             tr.innerHTML = `
-            <td class="col-num">${n}</td>
+            <td class="col-num" data-label="#">${n}</td>
 
-            <td>
-                <input type="date" id="date_${n}" value="${d.date || today}">
+            <td data-label="Date">
+                <input type="text" class="multi-date" id="date_${n}" value="${d.date || today}" placeholder="Select dates...">
             </td>
 
-            <td>
+            <td data-label="Destination">
                 <input type="text" id="dest_${n}" 
                     value="${d.dest || ''}" 
                     placeholder="FROM - TO">
             </td>
 
-            <td>
+            <td data-label="MOT">
                 <select id="mot_${n}">
                     <option ${(d.mot || '') == 'Motorcycle' ? 'selected' : ''}>Motorcycle</option>
                     <option ${(d.mot || '') == 'Bus' ? 'selected' : ''}>Bus</option>
@@ -632,19 +750,19 @@
                 </select>
             </td>
 
-            <td>
+            <td data-label="Amount">
                 <input type="number" id="amount_${n}" 
                     value="${d.amount || ''}" 
                     placeholder="0">
             </td>
 
-            <td>
+            <td data-label="Purpose">
                 <input type="text" id="purpose_${n}" 
                     value="${d.purpose || 'Scheduled duty'}" 
                     placeholder="Purpose">
             </td>
 
-            <td>
+            <td data-label="Received By">
                 <input type="text" id="recby_${n}" 
                     value="${d.recby || ''}" 
                     placeholder="Name">
@@ -658,6 +776,13 @@
         `;
 
             tbody.appendChild(tr);
+            
+            flatpickr(`#date_${n}`, {
+                mode: "multiple",
+                dateFormat: "Y-m-d",
+                defaultDate: d.date ? d.date.split(',').map(s => s.trim()) : today
+            });
+
             updateCount();
         }
 
@@ -665,6 +790,7 @@
             const row = document.getElementById('row_' + n);
             if (row) row.remove();
             updateCount();
+            saveData();
         }
 
         function updateCount() {
@@ -680,6 +806,20 @@
             document.getElementById('output').innerHTML = '';
             rowCount = 0;
             updateCount();
+            localStorage.removeItem('transposlips_data');
+            
+            document.getElementById('mainView').style.display = 'none';
+            document.getElementById('setupView').style.display = 'block';
+            
+            const fp = document.getElementById('setupDates')._flatpickr;
+            if (fp) fp.clear();
+
+            const content = document.getElementById('accordionContent');
+            const icon = document.getElementById('accordionIcon');
+            if (content && icon) {
+                content.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            }
         }
 
         function slipHTML(data, isEmpty) {
@@ -792,14 +932,21 @@
 
             rows.forEach(row => {
                 const id = row.id.replace('row_', '');
+                
+                const datesStr = document.getElementById('date_' + id)?.value || '';
+                const dates = datesStr.split(',').map(d => d.trim()).filter(d => d);
+                
+                if (dates.length === 0) dates.push(''); // fallback if empty
 
-                slips.push({
-                    date: document.getElementById('date_' + id)?.value || '',
-                    dest: document.getElementById('dest_' + id)?.value || '',
-                    mot: document.getElementById('mot_' + id)?.value || '',
-                    amount: document.getElementById('amount_' + id)?.value || '',
-                    purpose: document.getElementById('purpose_' + id)?.value || '',
-                    recby: document.getElementById('recby_' + id)?.value || '',
+                dates.forEach(dateStr => {
+                    slips.push({
+                        date: dateStr,
+                        dest: document.getElementById('dest_' + id)?.value || '',
+                        mot: document.getElementById('mot_' + id)?.value || '',
+                        amount: document.getElementById('amount_' + id)?.value || '',
+                        purpose: document.getElementById('purpose_' + id)?.value || '',
+                        recby: document.getElementById('recby_' + id)?.value || '',
+                    });
                 });
             });
 
@@ -826,25 +973,92 @@
 
             document.getElementById('output').innerHTML = html;
 
+            const content = document.getElementById('accordionContent');
+            const icon = document.getElementById('accordionIcon');
+            content.style.display = 'none';
+            icon.style.transform = 'rotate(180deg)';
+
             document.getElementById('output')
                 .scrollIntoView({ behavior: 'smooth' });
         }
 
         window.onload = () => {
-            addRow({
-                dest: 'BUNAWAN - COACO',
-                amount: '150',
-                recby: 'Vins Mark Adlawan'
+            flatpickr('#setupDates', {
+                mode: 'multiple',
+                dateFormat: 'Y-m-d'
             });
-
-            addRow({
-                dest: 'BUNAWAN - COACO',
-                amount: '150',
-                recby: 'Vins Mark Adlawan'
-            });
+            
+            const saved = localStorage.getItem('transposlips_data');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    if (data && data.length > 0) {
+                        document.getElementById('setupView').style.display = 'none';
+                        document.getElementById('mainView').style.display = 'block';
+                        data.forEach(d => addRow(d));
+                    }
+                } catch(e) {}
+            }
+            
+            document.getElementById('entryBody').addEventListener('input', saveData);
+            document.getElementById('entryBody').addEventListener('change', saveData);
         };
+        
+        function saveData() {
+            const rows = document.querySelectorAll('#entryBody tr');
+            const data = [];
+            rows.forEach(row => {
+                const id = row.id.replace('row_', '');
+                data.push({
+                    date: document.getElementById('date_' + id)?.value || '',
+                    dest: document.getElementById('dest_' + id)?.value || '',
+                    mot: document.getElementById('mot_' + id)?.value || '',
+                    amount: document.getElementById('amount_' + id)?.value || '',
+                    purpose: document.getElementById('purpose_' + id)?.value || '',
+                    recby: document.getElementById('recby_' + id)?.value || '',
+                });
+            });
+            localStorage.setItem('transposlips_data', JSON.stringify(data));
+        }
+
+        function startWithDates() {
+            const dates = document.getElementById('setupDates').value;
+            if (!dates) {
+                alert("Please select at least one date.");
+                return;
+            }
+            
+            document.getElementById('setupView').style.display = 'none';
+            document.getElementById('mainView').style.display = 'block';
+            
+            const dateArray = dates.split(',').map(d => d.trim()).filter(d => d);
+            dateArray.forEach(d => {
+                addRow({
+                    date: d,
+                    dest: 'BUNAWAN - COACO',
+                    amount: '150',
+                    recby: 'Vins Mark Adlawan'
+                });
+            });
+            
+            saveData();
+        }
+        function toggleAccordion() {
+            const content = document.getElementById('accordionContent');
+            const icon = document.getElementById('accordionIcon');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.display = 'none';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 
 </html>
+
